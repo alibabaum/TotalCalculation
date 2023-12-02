@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.OutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 
@@ -10,32 +12,34 @@ public class Main {
     public static void main(String[] args) {
         double subtotal = 0;
         File input = new File("input.txt");
-        File file = new File("output.txt");
-        try {
-            Scanner sc = new Scanner(file);
+        File output = new File("output.txt");
+        try (Scanner scanner = new Scanner(new FileInputStream(input))){
+            Scanner sc = new Scanner(input);
+            while (sc.hasNextDouble()) {
+                subtotal = sc.nextDouble();
+                subtotal = subtotal + subtotal;
+            }
         } catch (IOException e) {
 
         }
         ArrayList<Double> reader = new ArrayList<Double>();
 
-        while (sc.hasNextLine) {
-            subtotal = sc.hasNextDouble();
-            subtotal = subtotal + subtotal;
-        }
+
         double tax = subtotal * .053;
         double total = subtotal + tax;
 
         try {
-            file.createNewFile();
+            output.createNewFile();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            FileOutputStream outputStream = new FileOutputStream(output.txt);
             FileWriter fileWriter = new FileWriter(output);
+            fileWriter.write("Your total is: " + total +"\r\n");
+            fileWriter.close();
         } catch (IOException e) {
-            System.out.println("File should be found...")
+            System.out.println("File should be found...");
         }
     }
 }
