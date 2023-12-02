@@ -13,7 +13,7 @@ public class Main {
         double subtotal = 0;
         File input = new File("items.txt");
         File output = new File("output.txt");
-        try (Scanner sc = new Scanner(new FileInputStream(input))){
+        try (Scanner sc = new Scanner(new FileInputStream(input))) {
             while (sc.hasNextDouble()) {
                 subtotal = sc.nextDouble();
                 subtotal = subtotal + subtotal;
@@ -35,9 +35,9 @@ public class Main {
 
         try {
             FileWriter fileWriter = new FileWriter(output);
-            fileWriter.write("Your subtotal is: " + subtotal +"\r\n");
-            fileWriter.write("Your tax is: " + tax +"\r\n");
-            fileWriter.write("Your total with tax is: " + total +"\r\n");
+            fileWriter.write("Your subtotal is: " + String.format("%.2f", subtotal) + "\r\n");
+            fileWriter.write("Your tax is: " + String.format("%.2f", tax) + "\r\n");
+            fileWriter.write("Your total with tax is: " + String.format("%.2f", total) + "\r\n");
             fileWriter.close();
         } catch (IOException e) {
             System.out.println("File should be found...");
