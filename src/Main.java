@@ -11,10 +11,9 @@ import java.io.FileWriter;
 public class Main {
     public static void main(String[] args) {
         double subtotal = 0;
-        File input = new File("input.txt");
+        File input = new File("items.txt");
         File output = new File("output.txt");
-        try (Scanner scanner = new Scanner(new FileInputStream(input))){
-            Scanner sc = new Scanner(input);
+        try (Scanner sc = new Scanner(new FileInputStream(input))){
             while (sc.hasNextDouble()) {
                 subtotal = sc.nextDouble();
                 subtotal = subtotal + subtotal;
@@ -36,7 +35,9 @@ public class Main {
 
         try {
             FileWriter fileWriter = new FileWriter(output);
-            fileWriter.write("Your total is: " + total +"\r\n");
+            fileWriter.write("Your subtotal is: " + subtotal +"\r\n");
+            fileWriter.write("Your tax is: " + tax +"\r\n");
+            fileWriter.write("Your total with tax is: " + total +"\r\n");
             fileWriter.close();
         } catch (IOException e) {
             System.out.println("File should be found...");
