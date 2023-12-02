@@ -35,9 +35,9 @@ public class Main {
 
         try {
             FileWriter fileWriter = new FileWriter(output);
-            fileWriter.write("Your subtotal is: " + String.format("%.2f", subtotal) + "\r\n");
-            fileWriter.write("Your tax is: " + String.format("%.2f", tax) + "\r\n");
-            fileWriter.write("Your total with tax is: " + String.format("%.2f", total) + "\r\n");
+            fileWriter.write("Your subtotal is: $" + String.format("%.2f", subtotal) + "\r\n");
+            fileWriter.write("Your tax is: $" + String.format("%.2f", tax) + "\r\n");
+            fileWriter.write("Your total with tax is: $" + String.format("%.2f", total) + "\r\n");
             fileWriter.close();
         } catch (IOException e) {
             System.out.println("File should be found...");
